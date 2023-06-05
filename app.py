@@ -14,7 +14,7 @@ def create_app():
         return render_template("forest_fire.html") \
  \
             @app.route('/predict', methods=['POST', 'GET'])
-            def predict():
+                def predict():
                 int_features = [int(x) for x in request.form.values()]
                 final = [np.array(int_features)]
                 print(int_features)
