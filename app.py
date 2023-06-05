@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 
 def create_app():
-    2
+
     app = Flask(__name__)
 
     model = pickle.load(open('model.pkl', 'rb'))
@@ -23,10 +23,12 @@ def create_app():
         prediction = model.predict_proba(final)
         output = '{0:.{1}f}'.format(prediction[0][1], 2)
         if output > str(0.5):
-            return render_template('forest_fire.html',pred='Your Forest is in Danger.\nProbability of fire occuring is {}'.format(output),
+            return render_template('forest_fire.html',
+            pred='Your Forest is in Danger.\nProbability of fire occuring is {}'.format(output),
             bhai="kuch karna hain iska ab?")
         else:
-            return render_template('forest_fire.html', pred='Your Forest is safe.\n Probability of fire occuring is {}'.format(output),
-                               bhai="Your Forest is Safe for now")
-        if __name__ == '__main__':
-            app.run(debug=True)
+            return render_template('forest_fire.html',
+            pred='Your Forest is safe.\n Probability of fire occuring is {}'.format(output),
+            bhai="Your Forest is Safe for now")
+    if __name__ == '__main__':
+        app.run(debug=True)
